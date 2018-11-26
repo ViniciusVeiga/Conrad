@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Cornad</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+
+    @Scripts.Render("~/bundles/custom")
+
+    <link href="https://cdn.datatables.net/responsive/2.1.0/css/responsive.dataTables.min.css" rel="stylesheet" media="screen">
+    <link href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css" rel="stylesheet" media="screen">
+    <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.1.0/js/dataTables.responsive.min.js"></script>
+</head>
+<body>
+    <div class="wrapper">
+        <nav id="sidebar" class="">
+            <div class="sidebar-header">
+                <h3>@Html.ActionLink("Conrad", "Index", "Home", new { area = "" }, new { @class = "" })</h3>
+            </div>
+
+            <ul class="list-unstyled components">
+                <li>
+                    <a href="#Adm" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Administradores</a>
+                    <ul class="collapse list-unstyled" id="Adm">
+                        <li>@Html.ActionLink("Usuários", "Index", "Usuario", new { area = "" }, new { @class = "nav-link" })</li>
+                        <li>@Html.ActionLink("Clínicas", "Index", "Clinica", new { area = "" }, new { @class = "nav-link" })</li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#Medico" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Médicos</a>
+                    <ul class="collapse list-unstyled" id="Medico">
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+
+        <div id="content">
+            @RenderBody()
+        </div>
+    </div>
+
+    @RenderSection("scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,62 @@
+﻿@{ 
+    ViewBag.Title = "Lista de Usúario";
+    var urlEditar = "/Usuario/Item";
+}
+
+<div>
+    <div class="row" style="margin:10px">
+        <fieldset class="col-md-6">
+            <legend>Tabela de Usúarios</legend>
+        </fieldset>
+        <div class="text-right col-md-6">
+            <a href="@urlEditar" class="btn btn-success">Adicionar</a>
+        </div>
+    </div>
+    <div style="margin:10px">
+        <div >
+            <table id="Tabela" class="table" role="grid" aria-describedby="lista_info">
+                <thead>
+                    <tr>
+                        <td>Nome</td>
+                        <td>Cargo</td>
+                        <td width="50px">Ativo</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Jose Audaniso</td>
+                        <td>Médico</td>
+                        <td width="50px">Sim</td>
+                    </tr>
+                    <tr>
+                        <td>Luiz Castanho</td>
+                        <td>Farmacêutico</td>
+                        <td width="50px">Sim</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+
+    //$('#Tabela').dataTable(
+    //{
+    //    "ajax": "/Usuario/Listar",
+    //    "columns": [
+    //        {
+    //            "data": "Nome",
+    //            "render": function (data, type, row) {
+    //                if (data == null) { data = ''; }
+    //                return '<a href="/Cadastro/Item/' + row.Codigo + '">' + data + '</a>';
+    //            }
+    //        }
+    //    ],
+    //    "bAutoWidth": false,
+    //    "bInfo": false,
+    //    "bSort": false,
+    //    "bPaginate": false,
+    //    "searching": false
+    //});
+</script>

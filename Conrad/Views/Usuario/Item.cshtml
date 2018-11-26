@@ -1,0 +1,212 @@
+﻿
+@{
+    ViewBag.Title = "Cadastro Usúario";
+    var urlIndex = "/Usuario";
+}
+
+<div style="margin-top:10px">
+    <form id="Form" method="post" action="/Usuario/Salvar" role="form">
+
+        <!-- Cadastro Basico -->
+        <fieldset>
+            <legend>Cadastro</legend> <hr />
+            <input type="hidden" name="Codigo" />
+            <div class="row">
+                <div class="form-group col-md-6">
+                    <label>Nome</label>
+                    <input type="text" class="form-control" maxlength="150" name="Nome" autofocus />
+                </div>
+                <div class="form-group col-md-6">
+                    <label>Email</label>
+                    <input type="text" class="form-control" maxlength="300" name="Email" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-md-6">
+                    <label>Senha</label>
+                    <input type="password" class="form-control" maxlength="150" name="Senha" />
+                </div>
+                <div class="form-group col-md-6">
+                    <label>Confirmar senha</label>
+                    <input type="password" class="form-control" maxlength="150" name="ConfirmarSenha" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-md-6">
+                    <label>Data de nascimento</label>
+                    <input type="text" class="form-control" maxlength="50" name="DataNascimento" />
+                </div>
+                <div class="form-group col-md-1" style="margin:25px">
+                    <input type="radio" class="form-check-input" name="Genero" value="Masculino" checked>
+                    <label>Masculino</label>
+                </div>
+                <div class="form-group col-md-1" style="margin:25px">
+                    <input type="radio" class="form-check-input" name="Genero" value="Feminino">
+                    <label>Feminino</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-md-1" style="margin:25px">
+                    <input type="checkbox" class="form-check-input" name="Ativo" value="True">
+                    <label>Ativo</label>
+                </div>
+            </div>
+        </fieldset>
+        <br>
+
+        <!-- Endereço -->
+        <fieldset>
+            <legend>Endereço</legend> <hr />
+            <div class="row">
+                <div class="form-group col-md-6">
+                    <label>Cidade</label>
+                    <input type="text" class="form-control" maxlength="300" name="Cidade" />
+                </div>
+                <div class="form-group col-md-6">
+                    <label>Estado</label>
+                    <input type="text" class="form-control" maxlength="300" name="Estado" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-md-6">
+                    <label>Telefone</label>
+                    <input type="text" class="form-control" maxlength="50" name="Telefone" />
+                </div>
+            </div>
+        </fieldset>
+
+        <!-- Cadastro Especifico -->
+        <fieldset>
+            <legend>Cargo</legend> <hr />
+            <div class="row">
+                <div class="form-group col-md-1" style="margin:25px">
+                    <input type="radio" class="form-check-input" name="Cargo" id="Medico" onclick="show(1)" checked>
+                    <label>Médico</label>
+                </div>
+                <div class="form-group col-md-1" style="margin:25px">
+                    <input type="radio" class="form-check-input" name="Cargo" id="Assistente" onclick="show(2)">
+                    <label>Assistente</label>
+                </div>
+                <div class="form-group col-md-1" style="margin:25px">
+                    <input type="radio" class="form-check-input" name="Cargo" id="Farmaceutico" onclick="show(3)">
+                    <label>Farmacêutico</label>
+                </div>
+            </div>
+            <div id="MedicoForm">
+                <div class="row">
+                    <div class="form-group col-md-6">
+                        <label>CRM</label>
+                        <input type="text" class="form-control" maxlength="150" name="CRM" />
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label>Área</label>
+                        <select class="form-control" name="Escolaridades">
+                            <option>Selecione ...</option>
+                            <option>Dermatologia</option>
+                            <option>Genética Médica:</option>
+                            <option>Ginecologia e Obstetrícia</option>
+                            <option>Homeopatia</option>
+                            <option>Infectologia</option>
+                            <option>Medicina Física e Reabilitação</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-6">
+                        <label>Clínica</label>
+                        <select class="form-control" name="Clinica">
+                            <option>Selecione ...</option>
+                            <option>Clínica de Fisioterapia Hanna</option>
+                            <option>Clínica Bozelli</option>
+                            <option>Clínica Movimente Fisioterapia Integrada</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div id="FarmaceuticoForm">
+                <div class="row">
+                    <div class="form-group col-md-6">
+                        <label>Clínica</label>
+                        <select class="form-control" name="Clinica">
+                            <option>Selecione ...</option>
+                            <option>Clínica de Fisioterapia Hanna</option>
+                            <option>Clínica Bozelli</option>
+                            <option>Clínica Movimente Fisioterapia Integrada</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div id="AssistenteForm">
+                <div class="row">
+                    <div class="form-group col-md-6">
+                        <label>Farmácia</label>
+                        <input type="text" class="form-control" maxlength="300" name="Email" />
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+        <div class="form-group col-md-12 text-right">
+            <a class="btn btn-danger" href="@urlIndex">Cancelar</a>
+            <input type="submit" class="btn btn-success" value="Salvar" />
+        </div>
+    </form>
+</div>
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        show(1);
+    });
+
+    function show(choice) {
+        switch (choice) {
+            case 1:
+                $("#MedicoForm").show();
+                $("#FarmaceuticoForm").hide();
+                $("#AssistenteForm").hide();
+                break;
+
+            case 2:
+                $("#MedicoForm").hide();
+                $("#FarmaceuticoForm").show();
+                $("#AssistenteForm").hide();
+                break;
+
+            case 3:
+                $("#MedicoForm").hide();
+                $("#FarmaceuticoForm").hide();
+                $("#AssistenteForm").show();
+                break;
+        }
+    }
+
+    $('#Form').validate({
+        rules: {
+            Nome: {
+                required: true
+            },
+            Email: {
+                required: true,
+                email: true
+            },
+            Senha: {
+                required: true
+            },
+            ConfirmarSenha: {
+                required: true,
+                equalTo: "input[name=Senha]"
+            },
+            DataNascimento: {
+                required: true
+            }
+        },
+        errorPlacement: function (error, element) {
+            error.addClass('alert alert-danger');
+            error.css("margin-top", "10px");
+
+            console.log($("input[name=Senha]").val());
+            element.after(error);
+        }
+    });
+</script>
+
