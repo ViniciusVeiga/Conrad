@@ -1,4 +1,6 @@
-﻿
+﻿@using Conrad.Model;
+@model MLClinica
+
 @{
     ViewBag.Title = "Cadastro Clínica";
     var urlIndex = "/Clinica";
@@ -14,15 +16,14 @@
             <div class="row">
                 <div class="form-group col-md-12">
                     <label>Nome</label>
-                    <input type="text" class="form-control" maxlength="150" name="Nome" autofocus />
+                    <input type="text" class="form-control" maxlength="150" name="Nome" @(!Model.Codigo.HasValue ? "autofocus" : string.Empty) value="@Model.Nome" />
                 </div>
             </div>
             <div class="row">
                 <div class="form-group col-md-6">
                     <label>Medicos</label>
                     <select class="form-control" name="Medicos" multiple>
-                        <option>Jose Audaniso</option>
-                        <option>Luiz Castanho</option>
+                        <option @(Model.Codigo == 2 ? "selected" : string.Empty)>Jose Audaniso</option>
                     </select>
                 </div>
                 <div class="form-group col-md-6">
@@ -38,25 +39,29 @@
         <fieldset>
             <legend>Endereço</legend> <hr />
             <div class="row">
-                <div class="form-group col-md-6">
+                <div class="form-group col-md-12">
                     <label>Cidade</label>
-                    <input type="text" class="form-control" maxlength="300" name="Cidade" />
-                </div>
-                <div class="form-group col-md-6">
-                    <label>Estado</label>
-                    <input type="text" class="form-control" maxlength="300" name="Estado" />
+                    <input type="text" class="form-control" maxlength="300" name="Cidade" value="@Model.Endereco" />
                 </div>
             </div>
             <div class="row">
                 <div class="form-group col-md-6">
-                    <label>Telefone</label>
-                    <input type="text" class="form-control" maxlength="50" name="Telefone" />
+                    <label>Cidade</label>
+                    <input type="text" class="form-control" maxlength="300" name="Cidade" value="@Model.Cidade" />
+                </div>
+                <div class="form-group col-md-6">
+                    <label>Estado</label>
+                    <input type="text" class="form-control" maxlength="50" name="Estado" value="@Model.Estado" />
                 </div>
             </div>
         </fieldset>
 
         <div class="form-group col-md-12 text-right">
-            <a class="btn btn-danger" href="@urlIndex">Cancelar</a>
+            <a class="btn btn-dark" href="@urlIndex">Voltar</a>
+            @if (Model.Codigo.HasValue)
+            {
+                <input type="submit" class="btn btn-danger" value="Excluir" />
+            }
             <input type="submit" class="btn btn-success" value="Salvar" />
         </div>
     </form>

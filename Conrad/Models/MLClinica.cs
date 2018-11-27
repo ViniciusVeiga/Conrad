@@ -22,6 +22,10 @@ namespace Conrad.Model
 
         public string Endereco { get; set; }
 
+        public string Cidade { get; set; }
+
+        public string Estado { get; set; }
+
         public bool Ativo { get; set; }
 
         public List<string> Contatos { get; set; }

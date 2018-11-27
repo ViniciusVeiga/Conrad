@@ -17,7 +17,37 @@ namespace Conrad.Controllers
 
         #region Item
 
-        public ActionResult Item() => View();
+        public ActionResult Item(decimal? id)
+        {
+            MLClinica model = new MLClinica();
+
+            if (id == 1)
+            {
+                model = new MLClinica
+                {
+                    Codigo = 1,
+                    Nome = "Clínica de Fisioterapia Hanna",
+                    Endereco = "R. Figueredo dos Santos Coloridos",
+                    Cidade = "São Paulo",
+                    Estado = "SP",
+                    Ativo = true
+                };
+            }
+            else if (id == 2)
+            {
+                model = new MLClinica
+                {
+                    Codigo = 2,
+                    Nome = "Clínica Movimente Fisioterapia Integrada",
+                    Endereco = "R. Janeiro Feliz do Carvalho",
+                    Cidade = "São Paulo",
+                    Estado = "SP",
+                    Ativo = true
+                };
+            }
+
+            return View(model);
+        }
 
         #region Salvar
 
