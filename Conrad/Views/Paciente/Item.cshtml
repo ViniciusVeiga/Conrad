@@ -16,11 +16,11 @@
             <div class="row">
                 <div class="form-group col-md-6">
                     <label>Nome</label>
-                    <input type="text" class="form-control" maxlength="150" name="Nome" @(!Model.Codigo.HasValue ? "autofocus" : string.Empty) value="@Model.Nome" />
+                    <input type="text" class="form-control" name="Nome" @(!Model.Codigo.HasValue ? "autofocus" : string.Empty) value="@Model.Nome" />
                 </div>
                 <div class="form-group col-md-6">
                     <label>Email</label>
-                    <input type="text" class="form-control" maxlength="300" name="Email" value="@Model.Email" />
+                    <input type="text" class="form-control" name="Email" value="@Model.Email" />
                 </div>
             </div>
             @if (!Model.Codigo.HasValue)
@@ -28,18 +28,18 @@
                 <div class="row">
                     <div class="form-group col-md-6">
                         <label>Senha</label>
-                        <input type="password" class="form-control" maxlength="150" name="Senha" value="@Model.Senha" />
+                        <input type="password" class="form-control" name="Senha" value="@Model.Senha" />
                     </div>
                     <div class="form-group col-md-6">
                         <label>Confirmar senha</label>
-                        <input type="password" class="form-control" maxlength="150" name="ConfirmarSenha" value="@Model.Senha" />
+                        <input type="password" class="form-control" name="ConfirmarSenha" value="@Model.Senha" />
                     </div>
                 </div>
             }
             <div class="row">
                 <div class="form-group col-md-6">
                     <label>Data de nascimento</label>
-                    <input type="text" class="form-control" maxlength="50" name="DataNascimento" value="@Model.DataNascimento" />
+                    <input type="text" class="form-control" name="DataNascimento" value="@Model.DataNascimento" />
                 </div>
                 <div class="form-group col-md-1" style="margin:25px">
                     <input type="radio" class="form-check-input" name="Genero" value="Masculino" checked>
@@ -65,20 +65,41 @@
             <div class="row">
                 <div class="form-group col-md-6">
                     <label>Cidade</label>
-                    <input type="text" class="form-control" maxlength="300" name="Cidade" value="@Model.Cidade" />
+                    <input type="text" class="form-control" name="Cidade" value="@Model.Cidade" />
                 </div>
                 <div class="form-group col-md-6">
                     <label>Estado</label>
-                    <input type="text" class="form-control" maxlength="300" name="Estado" value="@Model.Estado" />
+                    <input type="text" class="form-control" name="Estado" value="@Model.Estado" />
                 </div>
             </div>
             <div class="row">
                 <div class="form-group col-md-6">
                     <label>Telefone</label>
-                    <input type="text" class="form-control" maxlength="50" name="Telefone" value="@Model.Telefone" />
+                    <input type="text" class="form-control" name="Telefone" value="@Model.Telefone" />
                 </div>
             </div>
         </fieldset>
+        <br />
+
+        @if (Model.Codigo.HasValue)
+        {
+            <!-- Observações -->
+            <fieldset>
+                <legend>Observações</legend> <hr />
+                <div class="row">
+                    <div class="form-group col-md-12">
+                        <textarea class="form-control"></textarea>
+                    </div>
+                    @for (int i = 0; i < Model.Observacoes.Count; i++)
+                    {
+                        <div class="col-md-12">
+                            <p>@string.Format("{0} | {1}", i, Model.Observacoes[i])</p>
+                        </div>
+                    }
+                </div>
+            </fieldset>
+        }
+
 
         <div class="form-group col-md-12 text-right">
             <a class="btn btn-outline-dark" href="@urlIndex">Voltar</a>
@@ -92,11 +113,6 @@
 </div>
 
 <script type="text/javascript">
-
-    $(document).ready(function () {
-        show(1);
-    });
-
 
     $('#Form').validate({
         rules: {

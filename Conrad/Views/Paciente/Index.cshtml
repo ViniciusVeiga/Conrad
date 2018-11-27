@@ -40,9 +40,9 @@
                     </tr>
                 </tbody>
             </table>
-            <label id="Success" class="alert alert-success btn-block" style="text-align:center">Mensagem enviada com sucesso!</label>
+            <label id="Success" class="alert alert-success btn-block" style="text-align:center; display:none">Mensagem enviada com sucesso!</label>
 
-            <fieldset id="Mensagem">
+            <fieldset id="Mensagem" style="display:none">
                 <legend id="Titulo"></legend> <hr />
                 <div class="row">
                     <div class="form-group col-md-12">
@@ -64,11 +64,6 @@
 </div>
 
 <script type="text/javascript">
-
-    $(document).ready(function () {
-        $("#Success").hide();
-        closeMensagem();
-    });
 
     function closeMensagem() {
         $("#Mensagem").hide();

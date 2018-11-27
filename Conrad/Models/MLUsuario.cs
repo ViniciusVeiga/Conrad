@@ -34,12 +34,12 @@ namespace Conrad.Model
     {
         public MLMedico()
         {
-            Especialidades = new List<MLEspecialidade>();
+            Especialidades = new List<string>();
         }
 
         public string CRM { get; set; }
 
-        public List<MLEspecialidade> Especialidades { get; set; }
+        public List<string> Especialidades { get; set; }
 
         public MLClinica Clinica { get; set; }
     }

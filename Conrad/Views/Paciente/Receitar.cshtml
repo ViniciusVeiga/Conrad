@@ -1,0 +1,73 @@
+﻿@using Conrad.Model;
+@model MLReceita
+
+@{
+    ViewBag.Title = "Enviar Receita";
+    var urlIndex = "/Paciente";
+}
+
+<div style="margin-top:10px">
+    <form id="Form" method="post" action="/Usuario/Salvar" role="form">
+
+        <!-- Cadastro Basico -->
+        <fieldset>
+            <legend>Receita para @(ViewBag.Nome ?? string.Empty)</legend> <hr />
+            <input type="hidden" name="Codigo" />
+            <div class="row">
+                <div class="form-group col-md-6">
+                    <label>Data de Validade</label>
+                    <input type="text" class="form-control" name="DataValidade" autofocus/>
+                </div>
+                <div class="form-group col-md-6">
+                    <label>Creditos de Uso</label>
+                    <input type="number" class="form-control" name="CreditosUso" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-md-6">
+                    <label>Instrução</label>
+                    <select class="form-control">
+                        <option>Selecione ...</option>
+                        <option>Melatonina</option>
+                        <option>Anti-histamínicos</option>
+                    </select>
+                </div>
+                <div class="form-group col-md-4">
+                    <label>Assinatura Médica</label>
+                    <br />
+                    <input type="file" name="file" accept="image/jpeg, image/jpg" />
+                </div>
+            </div>
+        </fieldset>
+
+        <div class="form-group col-md-12 text-right">
+            <a class="btn btn-outline-dark" href="@urlIndex">Voltar</a>
+            <input type="submit" class="btn btn-success" value="Enviar" />
+        </div>
+    </form>
+</div>
+
+<script type="text/javascript">
+
+    $('#Form').validate({
+        rules: {
+            DataValidade: {
+                required: true
+            },
+            CreditosUso: {
+                required: true,
+            },
+            file: {
+                required: true,
+            }
+        },
+        errorPlacement: function (error, element) {
+            error.addClass('alert alert-danger');
+            error.css("margin-top", "10px");
+
+            console.log($("input[name=Senha]").val());
+            element.after(error);
+        }
+    });
+</script>
+

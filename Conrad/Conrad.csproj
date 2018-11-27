@@ -151,7 +151,6 @@
     </Compile>
     <Compile Include="Models\MLClinica.cs" />
     <Compile Include="Models\MLConsulta.cs" />
-    <Compile Include="Models\MLEspecialidade.cs" />
     <Compile Include="Models\MLInstrucao.cs" />
     <Compile Include="Models\MLReceita.cs" />
     <Compile Include="Models\MLRemedio.cs" />
@@ -216,6 +215,7 @@
     <Content Include="Views\Clinica\Index.cshtml" />
     <Content Include="Views\Paciente\Index.cshtml" />
     <Content Include="Views\Paciente\Item.cshtml" />
+    <Content Include="Views\Paciente\Receitar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

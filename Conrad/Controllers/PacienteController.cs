@@ -22,8 +22,6 @@ namespace Conrad.Controllers
         {
             List<MLPaciente> list = new List<MLPaciente>();
 
-            list.Add(new MLPaciente { Nome = "Jerson", Ativo = true });
-
             return Json(list);
         }
 
@@ -37,12 +35,45 @@ namespace Conrad.Controllers
         {
             MLPaciente model = new MLPaciente();
 
+            if (id == 1)
+            {
+                model = new MLPaciente
+                {
+                    Codigo = 1,
+                    Nome = "Maria Joaquina",
+                    DataNascimento = Convert.ToDateTime("25/02/1981"),
+                    Senha = "senhadojose",
+                    Estado = "SP",
+                    Email = "moaquina@hotmail.com",
+                    Cidade = "Itapetininga",
+                    Ativo = true,
+                    Telefone = "(13) 988332145",
+                    Observacoes = new List<string> { "Dores fortes de cabeça na primeira análise.", "Paciente em analise de medicamentos fortes." }
+                };
+            }
+            else if (id == 2)
+            {
+                model = new MLPaciente
+                {
+                    Codigo = 2,
+                    Nome = "Francisco Ficoreio",
+                    DataNascimento = Convert.ToDateTime("21/05/1981"),
+                    Senha = "senhadojose",
+                    Estado = "SP",
+                    Email = "fran@hotmail.com",
+                    Cidade = "Itapetininga",
+                    Ativo = true,
+                    Telefone = "(13) 988335535",
+                    Observacoes = new List<string> { "Frescura.", "Recomendo um Psicólogo.", "Pode internar no Teixeira" }
+                };
+            }
+
             return View(model);
         }
 
         #region Salvar
 
-        public ActionResult Salvar(MLPaciente model)
+        public ActionResult Salvar(MLUsuario model)
         {
             // Salvar usuário aqui
 
@@ -50,6 +81,26 @@ namespace Conrad.Controllers
         }
 
         #endregion
+
+        #endregion
+
+        #region Receitar
+
+        public ActionResult Receitar(decimal? id)
+        {
+            MLReceita model = new MLReceita();
+
+            if (id == 1)
+            {
+                ViewBag.Nome = "Maria Joaquina";
+            }
+            else if (id == 2)
+            {
+                ViewBag.Nome = "Francisco Ficoreio";
+            }
+
+            return View(model);
+        }
 
         #endregion
     }
