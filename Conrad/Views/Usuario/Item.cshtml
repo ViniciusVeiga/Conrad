@@ -150,11 +150,14 @@
                 </div>
             </div>
         </fieldset>
+
+        <label id="Success" class="alert alert-info btn-block" style="text-align:center; display:none">Reenvio de senha realizado com successo!</label>
+
         <div class="row">
             <div class="form-group col-md-6">
                 @if (Model.Codigo.HasValue)
                 {
-                    <input type="button" class="btn btn-outline-info" value="Reenviar Senha" />
+                    <input type="button" class="btn btn-outline-info" value="Reenviar Senha" onclick="reenviar()"/>
                 }
             </div>
             <div class="form-group col-md-6 text-right">
@@ -170,6 +173,10 @@
 </div>
 
 <script type="text/javascript">
+
+    function reenviar() {
+        $("#Success").show();
+    }
 
     $(document).ready(function () {
         show(1);

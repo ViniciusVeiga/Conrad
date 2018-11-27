@@ -1,0 +1,56 @@
+﻿@{
+    ViewBag.Title = "Lista de Receita";
+    var urlEditar = "/Receita/Item";
+}
+
+<div>
+    <div class="row" style="margin:10px">
+        <fieldset class="col-md-6">
+            <legend>Histórico de Receita</legend>
+        </fieldset>
+    </div>
+    <div style="margin:10px">
+        <div>
+            <table id="Tabela" class="table" role="grid" aria-describedby="lista_info">
+                <thead>
+                    <tr>
+                        <td>Para</td>
+                        <td>Data de Emissão</td>
+                        <td>Data de Validade</td>
+                        <td width="50px">Ativo</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><a href="@urlEditar?id=1">Maria Joaquina</a></td>
+                        <td><a href="@urlEditar?id=1">23/02/2017</a></td>
+                        <td><a href="@urlEditar?id=1">22/02/2020</a></td>
+                        <td width="50px">Sim</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+
+    //$('#Tabela').dataTable(
+    //{
+    //    "ajax": "/Usuario/Listar",
+    //    "columns": [
+    //        {
+    //            "data": "Nome",
+    //            "render": function (data, type, row) {
+    //                if (data == null) { data = ''; }
+    //                return '<a href="/Cadastro/Item/' + row.Codigo + '">' + data + '</a>';
+    //            }
+    //        }
+    //    ],
+    //    "bAutoWidth": false,
+    //    "bInfo": false,
+    //    "bSort": false,
+    //    "bPaginate": false,
+    //    "searching": false
+    //});
+</script>

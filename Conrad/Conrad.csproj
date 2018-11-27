@@ -144,6 +144,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\ClinicaController.cs" />
     <Compile Include="Controllers\PacienteController.cs" />
+    <Compile Include="Controllers\ReceitaController.cs" />
     <Compile Include="Controllers\UsuarioController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
@@ -216,6 +217,8 @@
     <Content Include="Views\Paciente\Index.cshtml" />
     <Content Include="Views\Paciente\Item.cshtml" />
     <Content Include="Views\Paciente\Receitar.cshtml" />
+    <Content Include="Views\Receita\Item.cshtml" />
+    <Content Include="Views\Receita\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
