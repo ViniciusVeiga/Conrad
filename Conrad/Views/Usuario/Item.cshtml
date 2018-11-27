@@ -1,4 +1,6 @@
-﻿
+﻿@using Conrad.Model;
+@model MLMedico
+
 @{
     ViewBag.Title = "Cadastro Usúario";
     var urlIndex = "/Usuario";
@@ -14,27 +16,30 @@
             <div class="row">
                 <div class="form-group col-md-6">
                     <label>Nome</label>
-                    <input type="text" class="form-control" maxlength="150" name="Nome" autofocus />
+                    <input type="text" class="form-control" maxlength="150" name="Nome" @(!Model.Codigo.HasValue ? "autofocus" : string.Empty) value="@Model.Nome" />
                 </div>
                 <div class="form-group col-md-6">
                     <label>Email</label>
-                    <input type="text" class="form-control" maxlength="300" name="Email" />
+                    <input type="text" class="form-control" maxlength="300" name="Email" value="@Model.Email" />
                 </div>
             </div>
-            <div class="row">
-                <div class="form-group col-md-6">
-                    <label>Senha</label>
-                    <input type="password" class="form-control" maxlength="150" name="Senha" />
+            @if (!Model.Codigo.HasValue)
+            {
+                <div class="row">
+                    <div class="form-group col-md-6">
+                        <label>Senha</label>
+                        <input type="password" class="form-control" maxlength="150" name="Senha" value="@Model.Senha" />
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label>Confirmar senha</label>
+                        <input type="password" class="form-control" maxlength="150" name="ConfirmarSenha" value="@Model.Senha" />
+                    </div>
                 </div>
-                <div class="form-group col-md-6">
-                    <label>Confirmar senha</label>
-                    <input type="password" class="form-control" maxlength="150" name="ConfirmarSenha" />
-                </div>
-            </div>
+            }
             <div class="row">
                 <div class="form-group col-md-6">
                     <label>Data de nascimento</label>
-                    <input type="text" class="form-control" maxlength="50" name="DataNascimento" />
+                    <input type="text" class="form-control" maxlength="50" name="DataNascimento" value="@Model.DataNascimento" />
                 </div>
                 <div class="form-group col-md-1" style="margin:25px">
                     <input type="radio" class="form-check-input" name="Genero" value="Masculino" checked>
@@ -47,7 +52,7 @@
             </div>
             <div class="row">
                 <div class="form-group col-md-1" style="margin:25px">
-                    <input type="checkbox" class="form-check-input" name="Ativo" value="True">
+                    <input type="checkbox" class="form-check-input" name="Ativo" value="True" @(Model.Ativo == true ? "checked" : string.Empty)>
                     <label>Ativo</label>
                 </div>
             </div>
@@ -60,17 +65,17 @@
             <div class="row">
                 <div class="form-group col-md-6">
                     <label>Cidade</label>
-                    <input type="text" class="form-control" maxlength="300" name="Cidade" />
+                    <input type="text" class="form-control" maxlength="300" name="Cidade" value="@Model.Cidade"/>
                 </div>
                 <div class="form-group col-md-6">
                     <label>Estado</label>
-                    <input type="text" class="form-control" maxlength="300" name="Estado" />
+                    <input type="text" class="form-control" maxlength="300" name="Estado" value="@Model.Estado"/>
                 </div>
             </div>
             <div class="row">
                 <div class="form-group col-md-6">
                     <label>Telefone</label>
-                    <input type="text" class="form-control" maxlength="50" name="Telefone" />
+                    <input type="text" class="form-control" maxlength="50" name="Telefone" value="@Model.Telefone"/>
                 </div>
             </div>
         </fieldset>
@@ -80,15 +85,15 @@
             <legend>Cargo</legend> <hr />
             <div class="row">
                 <div class="form-group col-md-1" style="margin:25px">
-                    <input type="radio" class="form-check-input" name="Cargo" id="Medico" onclick="show(1)" checked>
+                    <input type="radio" class="form-check-input" name="Cargo" id="Medico" onclick="show(1)" checked @(Model.Codigo.HasValue ? "disabled" : string.Empty)>
                     <label>Médico</label>
                 </div>
                 <div class="form-group col-md-1" style="margin:25px">
-                    <input type="radio" class="form-check-input" name="Cargo" id="Assistente" onclick="show(2)">
+                    <input type="radio" class="form-check-input" name="Cargo" id="Assistente" onclick="show(2)" @(Model.Codigo.HasValue ? "disabled" : string.Empty)>
                     <label>Assistente</label>
                 </div>
                 <div class="form-group col-md-1" style="margin:25px">
-                    <input type="radio" class="form-check-input" name="Cargo" id="Farmaceutico" onclick="show(3)">
+                    <input type="radio" class="form-check-input" name="Cargo" id="Farmaceutico" onclick="show(3)" @(Model.Codigo.HasValue ? "disabled" : string.Empty)>
                     <label>Farmacêutico</label>
                 </div>
             </div>
@@ -96,14 +101,14 @@
                 <div class="row">
                     <div class="form-group col-md-6">
                         <label>CRM</label>
-                        <input type="text" class="form-control" maxlength="150" name="CRM" />
+                        <input type="text" class="form-control" maxlength="150" name="CRM" value="@Model.CRM"/>
                     </div>
                     <div class="form-group col-md-6">
                         <label>Área</label>
                         <select class="form-control" name="Escolaridades">
                             <option>Selecione ...</option>
                             <option>Dermatologia</option>
-                            <option>Genética Médica:</option>
+                            <option @(Model.Codigo.HasValue ? "selected" : string.Empty)>Genética Médica</option>
                             <option>Ginecologia e Obstetrícia</option>
                             <option>Homeopatia</option>
                             <option>Infectologia</option>
@@ -118,7 +123,7 @@
                             <option>Selecione ...</option>
                             <option>Clínica de Fisioterapia Hanna</option>
                             <option>Clínica Bozelli</option>
-                            <option>Clínica Movimente Fisioterapia Integrada</option>
+                            <option @(Model.Codigo.HasValue ? "selected" : string.Empty)>Clínica Movimente Fisioterapia Integrada</option>
                         </select>
                     </div>
                 </div>
@@ -146,7 +151,11 @@
             </div>
         </fieldset>
         <div class="form-group col-md-12 text-right">
-            <a class="btn btn-danger" href="@urlIndex">Cancelar</a>
+            <a class="btn btn-dark" href="@urlIndex">Voltar</a>
+            @if (Model.Codigo.HasValue)
+            {
+                <input type="submit" class="btn btn-danger" value="Excluir" />
+            }
             <input type="submit" class="btn btn-success" value="Salvar" />
         </div>
     </form>

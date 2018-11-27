@@ -35,7 +35,24 @@ namespace Conrad.Controllers
 
         public ActionResult Item(decimal? id)
         {
-            MLUsuario model = new MLUsuario();
+            MLMedico model = new MLMedico();
+
+            if (id == 1)
+            {
+                model = new MLMedico
+                {
+                    Codigo = 1,
+                    Nome = "Jose Audaniso",
+                    DataNascimento = Convert.ToDateTime("22/02/1980"),
+                    Senha = "senhadojose",
+                    Estado = "SP",
+                    CRM = "391722",
+                    Email = "ze@hotmail.com",
+                    Cidade = "Itapetininga",
+                    Ativo = true,
+                    Telefone = "(13) 988119947"
+                };
+            }
 
             return View(model);
         }

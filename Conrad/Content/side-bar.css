@@ -7,6 +7,7 @@
 body {
     font-family: 'Signika', sans-serif;
     background: #fafafa;
+    color: #36393f;
 }
 
 h3 {
@@ -31,7 +32,7 @@ a:focus {
 
 .navbar {
     padding: 15px 10px;
-    background: #fff;
+    background: #fafafa;
     border: none;
     border-radius: 0;
     margin-bottom: 40px;
@@ -65,7 +66,7 @@ a:focus {
     min-width: 250px;
     max-width: 250px;
     background: #36393f;
-    color: #fff;
+    color: #fafafa;
     transition: all 0.3s;
 }
 
@@ -83,7 +84,7 @@ a:focus {
 }
 
 #sidebar ul p {
-    color: #fff;
+    color: #fafafa;
     padding: 10px;
 }
 
@@ -95,12 +96,12 @@ a:focus {
 
 #sidebar ul li a:hover {
     color: #36393f;
-    background: #fff;
+    background: #fafafa;
 }
 
 #sidebar ul li.active>a,
 a[aria-expanded="true"] {
-    color: #fff;
+    color: #fafafa;
     background: #3d4148;
 }
 
@@ -135,14 +136,14 @@ ul.CTAs a {
 }
 
 a.download {
-    background: #fff;
+    background: #fafafa;
     color: #36393f;
 }
 
 a.article,
 a.article:hover {
     background: #3d4148 !important;
-    color: #fff !important;
+    color: #fafafa !important;
 }
 
 /* ---------------------------------------------------
