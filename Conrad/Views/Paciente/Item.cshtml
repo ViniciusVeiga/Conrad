@@ -1,0 +1,130 @@
+﻿@using Conrad.Model;
+@model MLPaciente
+
+@{
+    ViewBag.Title = "Cadastro Paciente";
+    var urlIndex = "/Paciente";
+}
+
+<div style="margin-top:10px">
+    <form id="Form" method="post" action="/Usuario/Salvar" role="form">
+
+        <!-- Cadastro Basico -->
+        <fieldset>
+            <legend>Cadastro</legend> <hr />
+            <input type="hidden" name="Codigo" />
+            <div class="row">
+                <div class="form-group col-md-6">
+                    <label>Nome</label>
+                    <input type="text" class="form-control" maxlength="150" name="Nome" @(!Model.Codigo.HasValue ? "autofocus" : string.Empty) value="@Model.Nome" />
+                </div>
+                <div class="form-group col-md-6">
+                    <label>Email</label>
+                    <input type="text" class="form-control" maxlength="300" name="Email" value="@Model.Email" />
+                </div>
+            </div>
+            @if (!Model.Codigo.HasValue)
+            {
+                <div class="row">
+                    <div class="form-group col-md-6">
+                        <label>Senha</label>
+                        <input type="password" class="form-control" maxlength="150" name="Senha" value="@Model.Senha" />
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label>Confirmar senha</label>
+                        <input type="password" class="form-control" maxlength="150" name="ConfirmarSenha" value="@Model.Senha" />
+                    </div>
+                </div>
+            }
+            <div class="row">
+                <div class="form-group col-md-6">
+                    <label>Data de nascimento</label>
+                    <input type="text" class="form-control" maxlength="50" name="DataNascimento" value="@Model.DataNascimento" />
+                </div>
+                <div class="form-group col-md-1" style="margin:25px">
+                    <input type="radio" class="form-check-input" name="Genero" value="Masculino" checked>
+                    <label>Masculino</label>
+                </div>
+                <div class="form-group col-md-1" style="margin:25px">
+                    <input type="radio" class="form-check-input" name="Genero" value="Feminino">
+                    <label>Feminino</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-md-1" style="margin:25px">
+                    <input type="checkbox" class="form-check-input" name="Ativo" value="True" @(Model.Ativo == true ? "checked" : string.Empty)>
+                    <label>Ativo</label>
+                </div>
+            </div>
+        </fieldset>
+        <br>
+
+        <!-- Endereço -->
+        <fieldset>
+            <legend>Endereço</legend> <hr />
+            <div class="row">
+                <div class="form-group col-md-6">
+                    <label>Cidade</label>
+                    <input type="text" class="form-control" maxlength="300" name="Cidade" value="@Model.Cidade" />
+                </div>
+                <div class="form-group col-md-6">
+                    <label>Estado</label>
+                    <input type="text" class="form-control" maxlength="300" name="Estado" value="@Model.Estado" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-md-6">
+                    <label>Telefone</label>
+                    <input type="text" class="form-control" maxlength="50" name="Telefone" value="@Model.Telefone" />
+                </div>
+            </div>
+        </fieldset>
+
+        <div class="form-group col-md-12 text-right">
+            <a class="btn btn-outline-dark" href="@urlIndex">Voltar</a>
+            @if (Model.Codigo.HasValue)
+            {
+                <input type="submit" class="btn btn-danger" value="Excluir" />
+            }
+            <input type="submit" class="btn btn-success" value="Salvar" />
+        </div>
+    </form>
+</div>
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        show(1);
+    });
+
+
+    $('#Form').validate({
+        rules: {
+            Nome: {
+                required: true
+            },
+            Email: {
+                required: true,
+                email: true
+            },
+            Senha: {
+                required: true
+            },
+            ConfirmarSenha: {
+                required: true,
+                equalTo: "input[name=Senha]"
+            },
+            DataNascimento: {
+                required: true
+            }
+        },
+        errorPlacement: function (error, element) {
+            error.addClass('alert alert-danger');
+            error.css("margin-top", "10px");
+
+            console.log($("input[name=Senha]").val());
+            element.after(error);
+        }
+    });
+</script>
+

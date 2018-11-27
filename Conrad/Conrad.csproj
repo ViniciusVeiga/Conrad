@@ -215,6 +215,7 @@
     <Content Include="Views\Clinica\Item.cshtml" />
     <Content Include="Views\Clinica\Index.cshtml" />
     <Content Include="Views\Paciente\Index.cshtml" />
+    <Content Include="Views\Paciente\Item.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

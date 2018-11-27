@@ -1,6 +1,7 @@
 ﻿@{
     ViewBag.Title = "Lista de Pacientes";
     var urlEditar = "/Paciente/Item";
+    var urlReceitar = "/Paciente/Receitar";
 }
 
 <div>
@@ -18,45 +19,72 @@
                 <thead>
                     <tr>
                         <td>Nome</td>
-                        <td>Cargo</td>
-                        <td width="50px">Ativo</td>
+                        <td width="150px">Ativo</td>
+                        <td width="50px"></td>
+                        <td width="50px"></td>
+
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td>Maria Joaquina</td>
-                        <td>Síndrome de Ardência Bucal</td>
+                        <td><a href="@urlEditar?id=1">Maria Joaquina</a></td>
                         <td width="50px">Sim</td>
+                        <td><input type="button" class="btn btn-outline-danger" value="Enviar Mensagem" onclick="showMensagem('Maria Joaquina')"></td>
+                        <td><a href="@urlReceitar?id=1" class="btn btn-outline-info">Receitar</a></td>
                     </tr>
                     <tr>
-                        <td>Luiz Laércio</td>
-                        <td>Farmacêutico</td>
+                        <td><a href="@urlEditar?id=2">Francisco Ficoreio</a></td>
                         <td width="50px">Sim</td>
+                        <td><input type="button" class="btn btn-outline-danger" value="Enviar Mensagem" onclick="showMensagem('Francisco Ficoreio')"></td>
+                        <td><a href="@urlReceitar?id=2" class="btn btn-outline-info">Receitar</a></td>
                     </tr>
                 </tbody>
             </table>
+            <label id="Success" class="alert alert-success btn-block" style="text-align:center">Mensagem enviada com sucesso!</label>
+
+            <fieldset id="Mensagem">
+                <legend id="Titulo"></legend> <hr />
+                <div class="row">
+                    <div class="form-group col-md-12">
+                        <label>Assunto</label>
+                        <input type="text" class="form-control" maxlength="150" name="Assunto" />
+                    </div>
+                    <div class="form-group col-md-12">
+                        <label>Mensagem</label>
+                        <textarea class="form-control" maxlength="500" name="Mensagem" /></textarea>
+                    </div>
+                </div>
+                <div class="form-group col-md-12 text-right">
+                    <input type="submit" class="btn btn-outline-dark" value="Cancelar" onclick="closeMensagem()"/>
+                    <input type="submit" class="btn btn-success" value="Enviar" onclick="enviarMensagem()"/>
+                </div>
+            </fieldset>
         </div>
     </div>
 </div>
 
 <script type="text/javascript">
 
-        //$('#Tabela').dataTable(
-        //{
-        //    "ajax": "/Paciente/Listar",
-        //    "columns": [
-        //        {
-        //            "data": "Nome",
-        //            "render": function (data, type, row) {
-        //                if (data == null) { data = ''; }
-        //                return '<a href="/Cadastro/Item/' + row.Codigo + '">' + data + '</a>';
-        //            }
-        //        }
-        //    ],
-        //    "bAutoWidth": false,
-        //    "bInfo": false,
-        //    "bSort": false,
-        //    "bPaginate": false,
-        //    "searching": false
-        //});
+    $(document).ready(function () {
+        $("#Success").hide();
+        closeMensagem();
+    });
+
+    function closeMensagem() {
+        $("#Mensagem").hide();
+    }
+
+    function enviarMensagem() {
+        $("#Mensagem").hide();
+        $("#Success").show();
+    }
+
+    function showMensagem(nome) {
+        $("#Mensagem").show();
+        $("#Success").hide();
+        $("#Titulo").text("Mensagem para " + nome);
+
+        $("input[name=Assunto]").val('');
+        $("textarea[name=Mensagem]").val('');
+    }
 </script>
